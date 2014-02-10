@@ -1,0 +1,1 @@
+A Vagrant environment for Ruby-on-Rails on Ubuntu
