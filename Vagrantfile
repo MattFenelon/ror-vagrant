@@ -57,5 +57,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
-  config.vm.provision :shell, :path => "bootstrap.sh"
+  config.vm.provision :shell, :path => "bootstrap.sh", :privileged => false
+  config.vm.provision :shell, :path => "bootstrap_postgres.sh"
+
+  # PostgreSQL port
+  config.vm.network :forwarded_port, guest: 5432, host: 15432
+
+  config.vm.network :forwarded_port, guest: 3000, host: 30000
 end
