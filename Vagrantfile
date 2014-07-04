@@ -17,6 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "../200/mightymatcha", "/code/mightymatcha", type: "nfs"
   config.vm.synced_folder "../200/yaconsyrup", "/code/yaconsyrup", type: "nfs"
   config.vm.synced_folder "../200/bodyproject", "/code/bodyproject", type: "nfs"
+  config.vm.synced_folder "../200/spree_bootstrap_frontend", "/code/spree_bootstrap_frontend", type: "nfs"
+  config.vm.synced_folder "../200/spree_tax_cloud", "/code/spree_tax_cloud", type: "nfs"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
