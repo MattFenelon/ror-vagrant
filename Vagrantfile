@@ -5,8 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box = "ubuntu/trusty64"
 
   config.vm.network "private_network", ip: "192.168.234.2"
 
@@ -23,17 +22,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "../200/spree_smooth_cart", "/code/spree_smooth_cart", type: "nfs"
   config.vm.synced_folder "../200/spree_fork", "/code/spree_fork", type: "nfs"
 
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--pae", "on"]
-    vb.customize ["modifyvm", :id, "--cpus", "2"]
-    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--cpus", "1"]
   end
 
-  config.vm.provision :shell, :path => "bootstrap.sh", :privileged => false
-  config.vm.provision :shell, :path => "bootstrap_postgres.sh"
-
-  # PostgreSQL port
-  config.vm.network :forwarded_port, guest: 5432, host: 15432
+  config.vm.provision :shell, :path => "provision_scripts/bootstrap.sh", :privileged => false
+  config.vm.provision :shell, :path => "provision_scripts/install_git.sh", :privileged => false
+  config.vm.provision :shell, :path => "provision_scripts/install_ruby.sh", :privileged => false
+  config.vm.provision :shell, :path => "provision_scripts/install_rails.sh", :privileged => false
+  config.vm.provision :shell, :path => "provision_scripts/install_spree.sh", :privileged => false
+  config.vm.provision :shell, :path => "provision_scripts/install_postgres.sh", :privileged => true
 end
