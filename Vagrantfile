@@ -10,26 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.234.2"
 
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  # config.vm.synced_folder "../200/indira", "/code/indira", type: "nfs"
-  # config.vm.synced_folder "../200/elvios", "/code/elvios", type: "nfs"
-  # config.vm.synced_folder "../200/biopearl", "/code/biopearl", type: "nfs"
-  config.vm.synced_folder "../200/goldengarcinia", "/code/goldengarcinia", type: "nfs"
-  # config.vm.synced_folder "../200/mightymatcha", "/code/mightymatcha", type: "nfs"
-  # config.vm.synced_folder "../200/yaconsyrup", "/code/yaconsyrup", type: "nfs"
-  # config.vm.synced_folder "../200/bodyproject", "/code/bodyproject", type: "nfs"
-  # config.vm.synced_folder "../200/spree_bootstrap_frontend", "/code/spree_bootstrap_frontend", type: "nfs"
-  # config.vm.synced_folder "../200/spree_tax_cloud", "/code/spree_tax_cloud", type: "nfs"
-  # config.vm.synced_folder "../200/spree_smooth_checkout", "/code/spree_smooth_checkout", type: "nfs"
-  # config.vm.synced_folder "../200/spree_smooth_cart", "/code/spree_smooth_cart", type: "nfs"
-  # config.vm.synced_folder "../200/spree_fork", "/code/spree_fork", type: "nfs"
-  # config.vm.synced_folder "../200/spree_multibuy_cart", "/code/spree_multibuy_cart", type: "nfs"
-  config.vm.synced_folder "../200/spree_fulfilment", "/code/spree_fulfilment", type: "nfs"
-  # config.vm.synced_folder "../200/spree_simple_html_emails", "/code/spree_simple_html_emails", type: "nfs"
-  # config.vm.synced_folder "../200/base", "/code/base", type: "nfs"
+  config.vm.synced_folder "../200/hivewebshop", "/code/hivewebshop", type: "nfs"
+  config.vm.synced_folder "../200/ifp-scraper", "/code/ifp-scraper", type: "nfs"
+  config.vm.synced_folder "../200/ifp-portal", "/code/ifp-portal", type: "nfs"
+  config.vm.synced_folder "../200/bowhurst", "/code/bowhurst", type: "nfs"
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--pae", "on"]
-    vb.customize ["modifyvm", :id, "--memory", "6144"]
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
     vb.customize ["modifyvm", :id, "--cpus", "1"]
     # Force the box into 64 bit mode. For some reason the Ubuntu box
     # isn't configured correctly.
