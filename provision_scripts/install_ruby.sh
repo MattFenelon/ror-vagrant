@@ -2,7 +2,7 @@
 
 ## Ruby ##
 
-RUBY_VERSION="2.3.1"
+RUBY_VERSION="2.4.0"
 
 if [ -d ~/.rbenv ]; then
     echo "Updating rbenv installation"
