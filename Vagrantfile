@@ -10,10 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.234.2"
 
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  # config.vm.synced_folder "../200/hivewebshop", "/code/hivewebshop", type: "nfs"
+  config.vm.synced_folder "../200/hivewebshop", "/code/hivewebshop", type: "nfs"
+  config.vm.synced_folder "../200/hivewebshop-us", "/code/hivewebshop-us", type: "nfs"
+  config.vm.synced_folder "../200/hivewebshop_common", "/code/hivewebshop_common", type: "nfs"
   config.vm.synced_folder "../200/ifp-scraper", "/code/ifp-scraper", type: "nfs"
   config.vm.synced_folder "../200/ifp-portal", "/code/ifp-portal", type: "nfs"
-  # config.vm.synced_folder "../200/bowhurst", "/code/bowhurst", type: "nfs"
+  config.vm.synced_folder "../200/rebootizer", "/code/rebootizer", type: "nfs"
+  config.vm.synced_folder "../auth0-ruby-spike", "/code/auth0-ruby-spike", type: "nfs"
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--pae", "on"]
